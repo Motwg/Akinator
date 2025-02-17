@@ -1,0 +1,16 @@
+{
+  "SECRET_KEY":"MySessionSecret",
+  "DEBUG": false,
+  "RUN_HOST": "127.0.0.1",
+  "RUN_PORT": 5000,
+  "DB_HOST": "localhost",
+  "DB_USER": "user",
+  "DB_PASSWORD": "password",
+  "DB_DATABASE": "tps",
+  "CACHE_TYPE": "SimpleCache",
+  "CACHE_KEY_PREFIX": "tps_app_",
+
+  "GUNICORN_PROCESSES": 2,
+  "GUNICORN_THREADS": 2,
+  "GUNICORN_BIND": "localhost:8080"
+}
