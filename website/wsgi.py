@@ -1,4 +1,4 @@
 
-from tps import create_app
+from akinator import create_app
 
 application = create_app()

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block metatags %}
+<meta name="description" content="Explain website">
+{% endblock %}
+
+{% block contents %}
+<div>
+    <ol class="breadcrumb small">
+        <li class="breadcrumb-item"><a href="{{url_for('bl_home.index')}}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">About</li>
+    </ol>
+</div>
+
+<h1>About this site</h1>
+<p class="lead">Scalable Flask + Boostrap 5 project.</p>
+<p>Add about</p>
+<div class="chart" id="bargraph">
+    <script>
+        let graphs = {{plot | safe}};
+		Plotly.plot('bargraph', graphs, {});
+    </script>
+</div>
+{% endblock %}

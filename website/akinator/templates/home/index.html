@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block meta_tags %}
+<meta name="description" content="Main Panel">
+{% endblock %}
+
+{% block contents %}
+<div>
+    <ol class="breadcrumb small">
+        <li class="breadcrumb-item active" aria-current="page">Home</li>
+    </ol>
+</div>
+
+{% if result %}
+<h1>You are thinking of {{ result }}!</h1>
+{% else %}
+<h1>{{ question_text }}</h1>
+<form>
+    <div class="slider-container">
+        <input type="range" min="0.01" max="1" value="0.5" step="0.01" class="slider" name="answer" list="markers">
+        <datalist id="markers">
+          <option value="No"></option>
+          <option value="Yes"></option>
+        </datalist>
+    </div>
+    <input type="hidden" name="question" value="{{ question }}"/>
+    <label><input type="radio" name="answer" value="1" required/> Yes</label><br/>
+    <label><input type="radio" name="answer" value="0.75" required/> Probably</label><br/>
+    <label><input type="radio" name="answer" value="0.5" required/> Don't know</label><br/>
+    <label><input type="radio" name="answer" value="0.25" required/> Probably Not</label><br/>
+    <label><input type="radio" name="answer" value="0" required/> No</label><br/>
+    <br/>
+    <input type="submit" class="btn btn-primary" value="Next" />
+</form>
+{% endif %}
+<script src="{{url_for('static',filename='js/home.js')}}"></script>
+{% endblock %}

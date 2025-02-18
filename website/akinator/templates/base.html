@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" class="h-100">
+	<head>
+		<!-- set the encoding of your site -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Akinator</title>
+		<link rel="icon" href="{{url_for('static',filename='images/variance_icon.png')}}" />
+		{% block meta_tags %}
+        {% endblock %}
 
-</body>
+		<!-- Bootstrap 5 style css-->
+		<link href="{{url_for('static',filename='external/css/bootstrap.min.css')}}" rel="stylesheet">
+
+		<!-- jQuery	-->
+		<script src="{{url_for('static',filename='external/js/jquery-3.7.1.min.js')}}"></script>
+
+
+		<!-- dataTables -->
+		<script src="{{url_for('static',filename='external/js/datatables.min.js')}}"></script>
+		<link rel="stylesheet" href="{{url_for('static',filename='external/css/datatables.min.css')}}">
+
+		<!-- moment -->
+		<script src="{{url_for('static',filename='external/js/moment.min.js')}}"></script>
+
+		<!-- plotly -->
+		<script src="{{url_for('static',filename='external/js/plotly-2.32.0.min.js')}}" charset="utf-8"></script>
+		
+		{% block scripts %}
+		{% endblock %}
+
+		<!-- Custom styles for this template -->
+		<link href="{{ url_for('static', filename='css/styles.css') }}" type="text/css" rel="stylesheet">
+
+	</head>
+	<body class="d-flex flex-column h-100">
+		
+		<header id="pageHeader" class="position-absolute w-100 bg-white">
+			<!-- Navbar -->
+			{% include "essentials/incl_navbar.html" %}
+		</header>
+
+		<main class="flex-shrink-0">
+		<!-- Start Main content -->
+			<div class="container">
+			{% block contents %}
+			{% endblock %}
+			</div>
+		<!-- End Main content -->
+		</main>	
+		
+
+		<!-- Footer -->
+		{% include "essentials/incl_footer.html" %}
+
+		<!-- Bootstrap 5.3 JavaScript -->
+		<script src="{{url_for('static',filename='external/js/bootstrap.min.js')}}"></script>
+
+		<!-- get custom JavaScript -->
+		<script src="{{url_for('static',filename='js/custom.js')}}"></script>
+		
+		{% include "essentials/incl_cookie_alert.html" %}
+		{% include "essentials/incl_modal.html" %}
+	</body>
 </html>
