@@ -6,9 +6,9 @@
   "DB_HOST": "localhost",
   "DB_USER": "user",
   "DB_PASSWORD": "password",
-  "DB_DATABASE": "tps",
+  "DB_DATABASE": "akinator",
   "CACHE_TYPE": "SimpleCache",
-  "CACHE_KEY_PREFIX": "tps_app_",
+  "CACHE_KEY_PREFIX": "akinator_",
 
   "GUNICORN_PROCESSES": 2,
   "GUNICORN_THREADS": 2,
