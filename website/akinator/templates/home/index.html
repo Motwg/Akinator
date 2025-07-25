@@ -13,11 +13,12 @@
 
 {% if result %}
 <h1>You are thinking of {{ result }}!</h1>
+<a class="btn btn-primary" href="/">Again</a>
 {% else %}
 <h1>{{ question_text }}</h1>
 <form>
     <div class="slider-container">
-        <input type="range" min="0.01" max="1" value="0.5" step="0.01" class="slider" name="answer" list="markers">
+        <input type="range" min="0.00" max="1" value="0.5" step="0.01" class="slider" name="answer1" list="markers">
         <datalist id="markers">
           <option value="No"></option>
           <option value="Yes"></option>
@@ -33,5 +34,16 @@
     <input type="submit" class="btn btn-primary" value="Next" />
 </form>
 {% endif %}
+
+<div class="container">
+    <br/>
+    Supported characters:
+    <ol>
+        {% for name in character_names %}
+        <li>{{name}}</li>
+        {% endfor %}
+    </ol>
+</div>
+
 <script src="{{url_for('static',filename='js/home.js')}}"></script>
 {% endblock %}

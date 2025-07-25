@@ -1,8 +1,8 @@
 {
-  "SECRET_KEY":"MySessionSecret",
+  "SECRET_KEY":"SomeKey",
   "DEBUG": false,
-  "RUN_HOST": "127.0.0.1",
-  "RUN_PORT": 5000,
+  "FLASK_RUN_HOST": "localhost",
+  "FLASK_RUN_PORT": 8099,
   "DB_HOST": "localhost",
   "DB_USER": "user",
   "DB_PASSWORD": "password",
@@ -12,5 +12,5 @@
 
   "GUNICORN_PROCESSES": 2,
   "GUNICORN_THREADS": 2,
-  "GUNICORN_BIND": "localhost:8080"
+  "GUNICORN_BIND": "localhost:8099"
 }

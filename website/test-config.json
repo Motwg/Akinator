@@ -1,8 +1,8 @@
 {
-  "SECRET_KEY":"MySessionSecret",
+  "SECRET_KEY":"SomeKey",
   "DEBUG": true,
-  "RUN_HOST": "127.0.0.1",
-  "RUN_PORT": 5000,
+  "FLASK_RUN_HOST": "127.0.0.1",
+  "FLASK_RUN_PORT": 5000,
   "DB_HOST": "localhost",
   "DB_USER": "user",
   "DB_PASSWORD": "password",

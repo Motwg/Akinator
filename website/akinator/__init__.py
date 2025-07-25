@@ -9,10 +9,10 @@ from .errorhandlers import *
 
 def create_app(mode='prod'):
     if mode == 'test':
-        app = Flask(__name__, instance_relative_config=True)
+        app = Flask(__name__, instance_relative_config=False)
         app.config.from_file('../test-config.json', load=json.load)
     elif mode == 'prod':
-        app = Flask(__name__, instance_relative_config=True)
+        app = Flask(__name__, instance_relative_config=False)
         app.config.from_file('../prod-config.json', load=json.load)
     else:
         raise AttributeError(f'Failed to load flask with mode {mode}')

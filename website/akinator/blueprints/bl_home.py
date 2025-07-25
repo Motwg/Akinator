@@ -4,31 +4,22 @@ from flask import (
     Blueprint, render_template, request, send_from_directory, current_app
 )
 
-from controllers.akinator import calculate_probabilities, questions
-from utils import set_menu
-from blueprints.auth import manage_cookie_policy
+from ..controllers.akinator import calculate_probabilities, questions, supported_characters
+from ..utils import set_menu
+from ..blueprints.auth import manage_cookie_policy
 
 bp = Blueprint('bl_home', __name__)
-
-
-@bp.route('/', methods=('GET',))
-# @manage_cookie_policy
-def index():
-    mc = set_menu('home')
-    return render_template(
-        'home/index.html',
-        mc=mc
-    )
 
 
 questions_so_far = []
 answers_so_far = []
 
 
-@bp.route('/what', methods=('GET',))
-def test():
+@bp.route('/', methods=('GET',))
+def index():
     global questions_so_far, answers_so_far
     mc = set_menu('home')
+    template = 'home/index.html'
 
     question = request.args.get('question')
     answer = request.args.get('answer')
@@ -37,24 +28,30 @@ def test():
         answers_so_far.append(float(answer))
 
     probabilities = calculate_probabilities(questions_so_far, answers_so_far)
+    for q, a in zip(questions_so_far, answers_so_far):
+        print(q, a)
     print("probabilities", probabilities)
 
     questions_left = list(set(questions.keys()) - set(questions_so_far))
     if len(questions_left) == 0:
         result = sorted(probabilities, key=lambda p: p['probability'], reverse=True)[0]
+        questions_so_far = []
+        answers_so_far = []
         return render_template(
-            'home/index.html',
+            template,
             mc=mc,
-            result=result['name']
+            result=result['name'],
+            character_names=supported_characters()
         )
     else:
         next_question = random.choice(questions_left)
         print(next_question, questions[next_question])
         return render_template(
-            'home/index.html',
+            template,
             mc=mc,
             question=next_question,
-            question_text=questions[next_question]
+            question_text=questions[next_question],
+            character_names=supported_characters()
         )
 
 

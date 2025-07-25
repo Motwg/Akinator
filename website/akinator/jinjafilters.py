@@ -2,10 +2,6 @@ from inflection import parameterize
 from markupsafe import Markup
 
 
-def slugify(variable):
-    return parameterize(variable)[:80].rstrip('-')
-
-
 # This data would better go in a database...
 errorDict = {
     "Err1": "ERROR 1: watch out for error n.1!",
